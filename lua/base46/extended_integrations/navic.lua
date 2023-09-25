@@ -43,8 +43,5 @@ local hlgroups = {
   NavicSeparator = { fg = colors.red },
 }
 
-for _, value in pairs(hlgroups) do
-  value["bg"] = colors.statusline_bg
-end
 
 return hlgroups
