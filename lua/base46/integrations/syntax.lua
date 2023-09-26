@@ -116,11 +116,11 @@ local syntax = {
 }
 
 local merge_tb = require("base46").merge_tb
--- local lsp_semantic_tokens = require("core.utils").load_config().ui.lsp_semantic_tokens
+local lsp_semantic_tokens = require("core.utils").load_config().ui.lsp_semantic_tokens
 
--- if vim.version().minor >= 9 and lsp_semantic_tokens then
---   local semantic_hls = {
---     ["@lsp.type.class"] = { link = "Structure" },
+if vim.version().minor >= 9 and lsp_semantic_tokens then
+  local semantic_hls = {
+    -- ["@lsp.type.class"] = { link = "Structure" },
 --     ["@lsp.type.decorator"] = { link = "Function" },
 --     ["@lsp.type.enum"] = { link = "Type" },
 --     ["@lsp.type.enumMember"] = { link = "Constant" },
@@ -134,13 +134,13 @@ local merge_tb = require("base46").merge_tb
 --     ["@lsp.type.struct"] = { link = "Structure" },
 --     ["@lsp.type.type"] = { link = "@type" },
 --     ["@lsp.type.typeParamater"] = { link = "TypeDef" },
---     ["@lsp.type.variable"] = { link = "@variable" },
+    ["@lsp.type.variable"] = { link = "@variable" },
 --     ["@event"] = { fg = theme.base08 },
 --     ["@modifier"] = { fg = theme.base08 },
 --     ["@regexp"] = { fg = theme.base0F },
---   }
---   syntax = merge_tb(syntax, semantic_hls)
--- end
+  }
+  syntax = merge_tb(syntax, semantic_hls)
+end
 
-return syntax
--- return merge_tb(syntax, require("base46").load_highlight "treesitter")
+-- return syntax
+return merge_tb(syntax, require("base46").load_highlight "treesitter")
