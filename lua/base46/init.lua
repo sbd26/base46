@@ -141,7 +141,7 @@ M.compile = function()
 
   for _, file in ipairs(vim.fn.readdir(hl_files)) do
     -- skip caching some files
-    if file ~= "treesitter" then
+    if file ~= "statusline" or file ~= "treesitter" then
       local filename = vim.fn.fnamemodify(file, ":r")
       M.saveStr_to_cache(filename, M.load_highlight(filename))
     end
@@ -171,38 +171,38 @@ M.override_theme = function(default_theme, theme_name)
   return M.merge_tb(default_theme, changed_themes.all or {}, changed_themes[theme_name] or {})
 end
 
-M.toggle_theme = function()
-  local themes = config.ui.theme_toggle
-  local theme1 = themes[1]
-  local theme2 = themes[2]
-
-  if g.nvchad_theme ~= theme1 and g.nvchad_theme ~= theme2 then
-    vim.notify "Set your current theme to one of those mentioned in the theme_toggle table (chadrc)"
-    return
-  end
-
-  if g.nvchad_theme == theme1 then
-    g.toggle_theme_icon = "   "
-    vim.g.nvchad_theme = theme2
-    require("nvchad.utils").replace_word('theme = "' .. theme1, 'theme = "' .. theme2)
-  else
-    vim.g.nvchad_theme = theme1
-    g.toggle_theme_icon = "   "
-    require("nvchad.utils").replace_word('theme = "' .. theme2, 'theme = "' .. theme1)
-  end
-
-  M.load_all_highlights()
-end
-
-M.toggle_transparency = function()
-  g.transparency = not g.transparency
-  M.load_all_highlights()
-
-  -- write transparency value to chadrc
-  local old_data = "transparency = " .. tostring(config.ui.transparency)
-  local new_data = "transparency = " .. tostring(g.transparency)
-
-  require("nvchad.utils").replace_word(old_data, new_data)
-end
+-- M.toggle_theme = function()
+--   local themes = config.ui.theme_toggle
+--   local theme1 = themes[1]
+--   local theme2 = themes[2]
+--
+--   if g.nvchad_theme ~= theme1 and g.nvchad_theme ~= theme2 then
+--     vim.notify "Set your current theme to one of those mentioned in the theme_toggle table (chadrc)"
+--     return
+--   end
+--
+--   if g.nvchad_theme == theme1 then
+--     g.toggle_theme_icon = "   "
+--     vim.g.nvchad_theme = theme2
+--     require("nvchad.utils").replace_word('theme = "' .. theme1, 'theme = "' .. theme2)
+--   else
+--     vim.g.nvchad_theme = theme1
+--     g.toggle_theme_icon = "   "
+--     require("nvchad.utils").replace_word('theme = "' .. theme2, 'theme = "' .. theme1)
+--   end
+--
+--   M.load_all_highlights()
+-- end
+--
+-- M.toggle_transparency = function()
+--   g.transparency = not g.transparency
+--   M.load_all_highlights()
+--
+--   -- write transparency value to chadrc
+--   local old_data = "transparency = " .. tostring(config.ui.transparency)
+--   local new_data = "transparency = " .. tostring(g.transparency)
+--
+--   require("nvchad.utils").replace_word(old_data, new_data)
+-- end
 
 return M
