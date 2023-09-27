@@ -4,7 +4,7 @@ return {
 
   BufferLineBackground = {
     fg = colors.light_grey,
-    bg = colors.black2,
+    bg = colors.black,
   },
 
   BufferlineIndicatorVisible = {
