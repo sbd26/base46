@@ -48,7 +48,7 @@ return {
   },
   BufferLineFill = {
     fg = colors.grey_fg,
-    bg = colors.black2,
+    bg = colors.black,
   },
   BufferlineIndicatorSelected = {
     fg = colors.black,
