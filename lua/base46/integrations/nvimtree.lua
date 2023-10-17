@@ -18,7 +18,9 @@ return {
     fg = colors.darker_black,
     bg = colors.darker_black,
   },
-NvimTreeWindowPicker = { fg = colors.red,
+
+  NvimTreeWindowPicker = {
+    fg = colors.red,
     bg = colors.black2,
   },
 
@@ -40,7 +42,7 @@ NvimTreeWindowPicker = { fg = colors.red,
   },
 
   NvimTreeRootFolder = {
-    fg = colors.green,
+    fg = colors.red,
     bold = true,
   },
 }
